@@ -22,6 +22,7 @@ public abstract class Gene<V>
 		setDataRandomly();
 	}
 	
+	
 	/**
 	 * Gets and returns the instance variable info.
 	 * 
@@ -32,19 +33,25 @@ public abstract class Gene<V>
 		return info;
 	}
 	
+	
 	/**
 	 * Replace the information contained within the gene by new, random information.
 	 */
 	abstract public void mutate();
 
+	
 	/**
 	 * Set the info contained within the Gene to random
 	 * values.  This is used when initializing the population.
 	 */
 	abstract public void setDataRandomly();
 	
+	
 	/**
-	 * {@inheritDoc}
+	 * Gets and returns the String representation of the info contained within
+	 * the Gene.
+	 * 
+	 * @return The String representation of the info instance variable.
 	 */
 	public String toString()
 	{
