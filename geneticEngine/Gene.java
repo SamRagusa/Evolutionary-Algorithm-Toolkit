@@ -1,5 +1,7 @@
 package geneticEngine;
 
+import java.util.Random;
+
 /**
  * An abstract class that represents some characteristic of a Chromosome object.  
  *
@@ -13,6 +15,11 @@ public abstract class Gene<V>
 	 * The information that the Gene stores.
 	 */
 	public V info;
+	
+	/**
+	 * A Random object to be used in implementations of this abstract class.
+	 */
+	public Random rand = new Random();
 	
 	/**
 	 * A constructor to create a Gene containing random information.
