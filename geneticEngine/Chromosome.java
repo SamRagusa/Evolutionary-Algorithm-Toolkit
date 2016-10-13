@@ -29,7 +29,7 @@ public class Chromosome
 	 */
 	public Chromosome(Chromosome toCopy)
 	{
-		this.genes = toCopy.genes; //maybe need deep copy
+		this.genes = toCopy.genes;
 	}
 	
 	
