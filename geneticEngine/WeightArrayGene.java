@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * An abstract class to represent an array of Double values,
+ * each which is bounded (not necessarily by the same bounds).  This Gene,
+ * though it can be used for other things, was designed for the purpose
+ * of having each of the Double values in the instance variable "info"
+ * represent a weight associated with the information contained in some
+ * other Gene Object in a Chromosome object.
+ * 
  * 
  * @author Sam Ragusa
  */
@@ -24,26 +31,31 @@ public abstract class WeightArrayGene extends Gene<List<Double>>
 
 	
 	/**
-	 * 
+	 * A Constructor that calls the method setDataRandomly() (through super();).
 	 */
 	public WeightArrayGene()
 	{
 		super();
 	}
-	
-	
+
 	/**
+	 * A constructor that sets the instance variable "info" to a given
+	 * List of Double objects, and constructs and sets the values of the instance
+	 * variables "maxWeights" and "minWeights"
 	 * 
-	 * @param weights
+	 * @param weights The List of Double objects to set the instance variable "info" to
 	 */
 	public WeightArrayGene(List<Double> weights)
 	{
 		this.info = weights;
-		setDataRandomly();
+		maxWeights = new double[info.size()];
+		minWeights = new double[info.size()];
+		setMaxMinWeights();
 	}
 	
 	/**
-	 * 
+	 * Randomly sets the value for each of the values in the instance
+	 * variable "info" within their defined bounds.
 	 */
 	public void mutate()
 	{
@@ -52,7 +64,10 @@ public abstract class WeightArrayGene extends Gene<List<Double>>
 	}
 
 	/**
-	 * 
+	 * Constructs and sets the values of the instance variables "maxWeights", "minWeights"
+	 * and "info".  The values in "maxWeights" and "minWeights" will be set using the method
+	 * setMaxMinWeights(), and the values in "info" will be set randomly between the bounds
+	 * given in "maxWeights" and "minWeights".
 	 */
 	public void setDataRandomly()
 	{
@@ -66,7 +81,7 @@ public abstract class WeightArrayGene extends Gene<List<Double>>
 	}
 	
 	/**
-	 * 
+	 * Gets and returns the value in the instance variable "info" at the desired index.
 	 * 
 	 * @param index The index of the value in the weight array to get
 	 * @return The value in the weight array at the requested index
@@ -77,15 +92,15 @@ public abstract class WeightArrayGene extends Gene<List<Double>>
 	}
 	
 	/**
-	 * 
+	 * Sets the values of the instance variables "maxWeights" and "minWeights"
 	 */
 	public abstract void setMaxMinWeights();
 	
 	/**
+	 * A method to get the number of weights that the Gene needs to store.
 	 * 
-	 * @return
+	 * @return The number of weights to store in the instance variable "info"
 	 */
 	public abstract int numWeightsNeeded();
-	
 
 }
